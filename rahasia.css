@@ -1,0 +1,44 @@
+
+body{
+    margin:0;
+    background:black;
+    color:#00ff00;
+    font-family:Consolas, monospace;
+    overflow:hidden;
+    text-align:center;
+}
+
+#loading{
+    margin-top:200px;
+}
+
+.bar{
+    width:400px;
+    height:25px;
+    border:2px solid #00ff00;
+    margin:auto;
+}
+
+#progress{
+    width:0%;
+    height:100%;
+    background:#00ff00;
+}
+
+#persen{
+    font-size:22px;
+}
+
+#matrix{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+}
+
+#system{
+    display:none;
+    margin-top:120px;
+    font-size:20px;
+    color:#00ff00;
+}
