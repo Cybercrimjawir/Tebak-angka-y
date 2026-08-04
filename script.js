@@ -5,7 +5,7 @@ function tebak() {
     let jawaban = Number(document.getElementById("jawaban").value);
     let hasil = document.getElementById("hasil");
 
-vif (jawaban === 67) {
+    if (jawaban === 67) {
     window.location.href = "rahasia.html";
     return;
 }
