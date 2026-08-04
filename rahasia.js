@@ -10,75 +10,70 @@ let loading = setInterval(() => {
     bar.style.width = progress + "%";
     persen.innerHTML = progress + "%";
 
-    if(progress >= 100){
+    if (progress >= 100) {
 
         clearInterval(loading);
 
-        document.getElementById("loading").style.display="none";
+        document.getElementById("loading").style.display = "none";
 
         startMatrix();
 
     }
 
-},40);
+}, 35);
 
-function startMatrix(){
+function startMatrix() {
 
-    const canvas=document.getElementById("matrix");
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
 
-    canvas.style.display="block";
+    canvas.style.display = "block";
 
-    const ctx=canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    canvas.width=window.innerWidth;
-    canvas.height=window.innerHeight;
+    const chars = "01";
+    const fontSize = 18;
+    const columns = Math.floor(canvas.width / fontSize);
 
-    const huruf="010101010101101001010101001101010101";
+    const drops = [];
 
-    const ukuran=18;
+    for (let i = 0; i < columns; i++) {
+        drops[i] = 1;
+    }
 
-    const kolom=canvas.width/ukuran;
+    const matrix = setInterval(() => {
 
-    const jatuh=[];
+        ctx.fillStyle = "rgba(0,0,0,0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    for(let i=0;i<kolom;i++) jatuh[i]=1;
+        ctx.fillStyle = "#00ff00";
+        ctx.font = fontSize + "px monospace";
 
-    function hujan(){
+        for (let i = 0; i < drops.length; i++) {
 
-        ctx.fillStyle="rgba(0,0,0,0.05)";
-        ctx.fillRect(0,0,canvas.width,canvas.height);
+            const text = chars[Math.floor(Math.random() * chars.length)];
 
-        ctx.fillStyle="#00ff00";
-        ctx.font=ukuran+"px monospace";
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        for(let i=0;i<jatuh.length;i++){
-
-            let text=huruf[Math.floor(Math.random()*huruf.length)];
-
-            ctx.fillText(text,i*ukuran,jatuh[i]*ukuran);
-
-            if(jatuh[i]*ukuran>canvas.height && Math.random()>0.975){
-
-                jatuh[i]=0;
-
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
             }
 
-            jatuh[i]++;
+            drops[i]++;
 
         }
 
-    }
+    }, 33);
 
-    let matrix=setInterval(hujan,35);
-
-    setTimeout(()=>{
+    setTimeout(() => {
 
         clearInterval(matrix);
 
-        canvas.style.display="none";
+        canvas.style.display = "none";
 
-        document.getElementById("system").style.display="block";
+        document.getElementById("system").style.display = "block";
 
-    },3000);
+    }, 3500);
 
-}
+                }
