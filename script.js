@@ -18,9 +18,9 @@ function tebak() {
     kesempatan--;
 
     if (jawaban < angkaRahasia) {
-        hasil.innerHTML = "📈 kelebihan!";
-    } else {
         hasil.innerHTML = "📉 kekecilan dongo!";
+    } else {
+        hasil.innerHTML = "📈 kelebihan!";
     }
 
     document.getElementById("kesempatan").innerHTML =
