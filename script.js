@@ -18,7 +18,7 @@ function tebak() {
     kesempatan--;
 
     if (jawaban < angkaRahasia) {
-        hasil.innerHTML = "📉 kekecilan dongo!";
+        hasil.innerHTML = "📉 kekecilan!";
     } else {
         hasil.innerHTML = "📈 kelebihan!";
     }
